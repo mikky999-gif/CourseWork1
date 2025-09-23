@@ -1,4 +1,3 @@
-import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         EmployeeBook employeeBook = new EmployeeBook();
@@ -29,7 +28,7 @@ public class Main {
         employee.add(employees[3]);
         employee.add(employees[4]);
         System.out.println("Список всех сотрудников:");
-        employee.listAllEmployees();
+        employee.printAllEmployees();
         System.out.println( );
         System.out.print("Среднее значение зарплат:");
         employee.averageSalary();
@@ -41,10 +40,10 @@ public class Main {
         employee.calculateTax("PROGRESSIVE");
         System.out.println();
         System.out.println("Индексация сотрудников:");
-        employee.indexation(4);
+        employee.indexation(4, 0.3);
         System.out.println();
-        System.out.print("Сотрудник с зарплатой больше 250000 рублей: ");
-        employee.findSalary(250000);
+        System.out.println("Сотрудник из нужного отдела с зарплатой больше указанной: ");
+        employee.findSalary(3,5000000);
         System.out.println();
         employee.findEmployeeNumber(250000, 2);
         System.out.println();
@@ -60,10 +59,7 @@ public class Main {
             System.out.println("Сотрудник с указанным id не найден.");
         }
         System.out.println();
-/*11 Проинициализируйте в main объект класса EmployeeBook и наполните его через метод добавления нового сотрудника —
-вызовите метод 11 раз, выведите результат исполнения метода на экран. EmployeeBook создан, и сотрудники добавлены через
-метод. Все методы EmployeeBook  вызваны и проверены на edge-кейсах — числовые значения - <,=,>; операции на пустом
-массиве, операции на частично заполненном и полностью заполненном массиве. Вывод соответствует ожиданиям.*/
+
         Employee newEmployee1 = new Employee("Абрамов", "Всеволод", "Ильич", 1, 20000);
         employees[6] = newEmployee1;
         System.out.println("Добавлен новый сотрудник " + employees[6]);
