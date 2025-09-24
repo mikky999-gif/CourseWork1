@@ -11,48 +11,48 @@ public class EmployeeBook {
     }
 
     public void printAllEmployees() {
-        for (Employee emp : employees) {
-            if (emp != null) {
-                System.out.println(emp);
+        for (Employee employee : employees) {
+            if (employee != null) {
+                System.out.println(employee);
             }
         }
     }
 
-    public void averageSalary() {
+    public void countAverageSalary() {
         double sum = 0;
         double count = 0;
-        double av = 0;
-        for (Employee e : employees) {
-            if (e != null) {
-                sum = sum + e.getSalary();
+        double avarage = 0;
+        for (Employee employee : employees) {
+            if (employee != null) {
+                sum = sum + employee.getSalary();
                 count++;
             }
         }
-        av = sum / count;
-        System.out.println(av);
+        avarage = sum / count;
+        System.out.println(avarage);
     }
 
     public void calculateTax(String taxType) {
-        for (Employee emp : employees) {
-            if (emp != null) {
-                double salary = emp.getSalary();
+        for (Employee employee : employees) {
+            if (employee != null) {
+                double salary = employee.getSalary();
                 double taxAmount = 0;
 
                 switch (taxType.toUpperCase()) {
                     case "PROPORTIONAL":
                         taxAmount = salary * 0.13;
-                        System.out.println("Налог для сотрудника " + emp.getSurname() + " составляет " + taxAmount + " рублей.");
+                        System.out.println("Налог для сотрудника " + employee.getSurname() + " составляет " + taxAmount + " рублей.");
                         break;
                     case "PROGRESSIVE":
                         if (salary <= 150) {
                             taxAmount = salary * 0.13;
-                            System.out.println("Налог для сотрудника " + emp.getSurname() + " составляет " + taxAmount + " рублей.");
+                            System.out.println("Налог для сотрудника " + employee.getSurname() + " составляет " + taxAmount + " рублей.");
                         } else if (salary <= 350) {
                             taxAmount = salary * 0.17;
-                            System.out.println("Налог для сотрудника " + emp.getSurname() + " составляет " + taxAmount + " рублей.");
+                            System.out.println("Налог для сотрудника " + employee.getSurname() + " составляет " + taxAmount + " рублей.");
                         } else {
                             taxAmount = salary * 0.21;
-                            System.out.println("Налог для сотрудника " + emp.getSurname() + " составляет " + taxAmount + " рублей.");
+                            System.out.println("Налог для сотрудника " + employee.getSurname() + " составляет " + taxAmount + " рублей.");
                         }
                         break;
                     default:
@@ -62,14 +62,14 @@ public class EmployeeBook {
         }
     }
 
-    public void indexation (int enterDepartment, double persent) {
-        for (Employee dep : employees) {
-            if (dep != null) {
-                int d = dep.getDepartment();
-                double s = dep.getSalary();
+    public void makeIndexation(int enterDepartment, double persent) {
+        for (Employee department : employees) {
+            if (department != null) {
+                int d = department.getDepartment();
+                double s = department.getSalary();
                 if (d == enterDepartment) {
-                    s = s + s * persent;
-                    System.out.println("Зарплата сотрудника " + dep.getSurname() + " после индексации составляет " + s + " рублей.");
+                    s += s * persent;
+                    System.out.println("Зарплата сотрудника " + department.getSurname() + " после индексации составляет " + s + " рублей.");
                     continue;
                 }
             }
@@ -85,8 +85,7 @@ public void findSalary(int numberOfDepartment, int enterSalaryToSearch) {
         boolean needEmployee = needDepartment == numberOfDepartment && needSalary > enterSalaryToSearch;
         if (needEmployee == true) {
                 employee.printShortInfo();
-                break;
-            } else {
+                } else {
                 System.out.println("В отделе " + numberOfDepartment + " не найден сотрудник с зарплатой больше " + enterSalaryToSearch);
                 break;
             }
@@ -96,24 +95,23 @@ public void findSalary(int numberOfDepartment, int enterSalaryToSearch) {
 
     public void findEmployeeNumber (int wage, int employeeNumber) {
         int count = 0;
-        int ind = 0;
+        int index = 0;
 
-        while (count < employeeNumber && ind < employees.length) {
-            Employee emp = employees[ind++];
+        while (count < employeeNumber && index < employees.length) {
+            Employee emp = employees[index++];
             if (emp != null && emp.getSalary() < wage) {
-                System.out.println("Номер сотрудника с зарплатой меньше " + wage + " : " + ind);
+                System.out.println("Номер сотрудника с зарплатой меньше " + wage + " : " + index);
                 emp.printShortInfo();
                 count++;
                 if (count == employeeNumber) {
-                    break;
                 }
             }
         }
     }
 
-    public boolean findEmployee(Employee sal) {
-        for (Employee ex : employees) {
-            if (ex != null && ex.equals(sal)) {
+    public boolean findEmployee(Employee salary) {
+        for (Employee needEmployee : employees) {
+            if (needEmployee != null && needEmployee.equals(salary)) {
                 return true;
             }
         }
@@ -131,9 +129,9 @@ public void findSalary(int numberOfDepartment, int enterSalaryToSearch) {
     }
 
     public Employee searchId(int id) {
-        for (Employee emp : employees) {
-            if (emp != null && emp.getId() == id) {
-                return emp;
+        for (Employee employee : employees) {
+            if (employee != null && employee.getId() == id) {
+                return employee;
             }
         }
         return null;

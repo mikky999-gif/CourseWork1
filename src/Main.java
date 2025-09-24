@@ -31,7 +31,7 @@ public class Main {
         employee.printAllEmployees();
         System.out.println( );
         System.out.print("Среднее значение зарплат:");
-        employee.averageSalary();
+        employee.countAverageSalary();
         System.out.println( );
         System.out.println("Налоги по схеме PROPORTIONAL:");
         employee.calculateTax("PROPORTIONAL");
@@ -40,7 +40,7 @@ public class Main {
         employee.calculateTax("PROGRESSIVE");
         System.out.println();
         System.out.println("Индексация сотрудников:");
-        employee.indexation(4, 0.3);
+        employee.makeIndexation(4, 0.3);
         System.out.println();
         System.out.println("Сотрудник из нужного отдела с зарплатой больше указанной: ");
         employee.findSalary(3,5000000);
