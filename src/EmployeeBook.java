@@ -117,7 +117,7 @@ public void findSalary(int numberOfDepartment, int enterSalaryToSearch) {
         }
         return false;
     }
-
+//
     public boolean addEmployee(Employee newEmployee) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
