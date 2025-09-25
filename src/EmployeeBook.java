@@ -28,6 +28,9 @@ public class EmployeeBook {
                 count++;
             }
         }
+        if (count == 0) {
+            throw new ArithmeticException("Нет сотрудников для расчета средней зарплаты.");
+        }
         avarage = sum / count;
         System.out.println(avarage);
     }
@@ -70,28 +73,28 @@ public class EmployeeBook {
                 if (d == enterDepartment) {
                     s += s * persent;
                     System.out.println("Зарплата сотрудника " + department.getSurname() + " после индексации составляет " + s + " рублей.");
-                    continue;
                 }
             }
         }
     }
 
-public void findSalary(int numberOfDepartment, int enterSalaryToSearch) {
-    for (int i = 0; i < employees.length; i++) {
-        Employee employee = employees[i];
-        if (employee != null) {
-        int needDepartment = employee.getDepartment();
-        int needSalary = employee.getSalary();
-        boolean needEmployee = needDepartment == numberOfDepartment && needSalary > enterSalaryToSearch;
-        if (needEmployee == true) {
+    public void findSalary(int departmentNumber, int salaryThreshold) {
+        boolean found = false;
+        for (int i = 0; i < employees.length; i++) {
+            Employee employee = employees[i];
+            if (employee != null &&
+                    employee.getDepartment() == departmentNumber &&
+                    employee.getSalary() > salaryThreshold) {
                 employee.printShortInfo();
-                } else {
-                System.out.println("В отделе " + numberOfDepartment + " не найден сотрудник с зарплатой больше " + enterSalaryToSearch);
+                found = true;
                 break;
             }
         }
+        if (!found) {
+            System.out.println("В отделе " + departmentNumber +
+                    " не найден сотрудник с зарплатой больше " + salaryThreshold);
+        }
     }
-}
 
     public void findEmployeeNumber (int wage, int employeeNumber) {
         int count = 0;
@@ -103,8 +106,9 @@ public void findSalary(int numberOfDepartment, int enterSalaryToSearch) {
                 System.out.println("Номер сотрудника с зарплатой меньше " + wage + " : " + index);
                 emp.printShortInfo();
                 count++;
-                if (count == employeeNumber) {
-                }
+            } else {
+                System.out.println("Сотрудник не найден.");
+                break;
             }
         }
     }

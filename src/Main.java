@@ -43,9 +43,9 @@ public class Main {
         employee.makeIndexation(4, 0.3);
         System.out.println();
         System.out.println("Сотрудник из нужного отдела с зарплатой больше указанной: ");
-        employee.findSalary(3,5000000);
+        employee.findSalary(3,50000);
         System.out.println();
-        employee.findEmployeeNumber(250000, 2);
+        employee.findEmployeeNumber(1000000, 2);
         System.out.println();
         Employee newEmp = new Employee("Поляков", "Николай", "Николаевич", 6, 60000);
         employees[5] = newEmp;
